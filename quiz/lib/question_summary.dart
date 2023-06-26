@@ -17,49 +17,66 @@ class QuestionsSummary extends StatelessWidget {
 
             return Row(
               children: [
-                Container(
-                  width: 30,
-                  height: 30,
-                  decoration: BoxDecoration(
-                    shape: BoxShape.circle,
-                    color: isCorrectAnswer ? Colors.green : Colors.red,
-                  ),
-                  child: Center(
-                    child: Text(
-                      ((data['question_index'] as int) + 1).toString(),
-                      style: const TextStyle(
-                        color: Colors.white,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                  ),
-                ),
                 const SizedBox(width: 10),
                 Expanded(
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text(
-                        data['question'].toString(),
-                        style: const TextStyle(fontWeight: FontWeight.bold),
+                      Row(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Container(
+                            width: 30,
+                            height: 30,
+                            decoration: BoxDecoration(
+                              shape: BoxShape.circle,
+                              color:
+                                  isCorrectAnswer ? Colors.green : Colors.red,
+                            ),
+                            child: Center(
+                              child: Text(
+                                ((data['question_index'] as int) + 1)
+                                    .toString(),
+                                style: const TextStyle(
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                            ),
+                          ),
+                          const SizedBox(width: 10),
+                          Expanded(
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  data['question'].toString(),
+                                  style: const TextStyle(
+                                      fontSize: 15,
+                                      fontWeight: FontWeight.bold),
+                                ),
+                                const SizedBox(height: 15),
+                                Text(
+                                  data['chosen_answer'].toString(),
+                                  style: const TextStyle(
+                                    color: Color.fromARGB(255, 39, 144, 176),
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                ),
+                                const SizedBox(height: 15),
+                                Text(
+                                  data['correct_answer'].toString(),
+                                  style: const TextStyle(
+                                    color: Color.fromARGB(255, 189, 121, 38),
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                ),
+                                const SizedBox(height: 15),
+                              ],
+                            ),
+                          ),
+                        ],
                       ),
-                      const SizedBox(height: 15),
-                      Text(
-                        data['chosen_answer'].toString(),
-                        style: const TextStyle(
-                          color: Colors.purple,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                      const SizedBox(height: 15),
-                      Text(
-                        data['correct_answer'].toString(),
-                        style: const TextStyle(
-                          color: Color.fromARGB(255, 41, 95, 232),
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                      const SizedBox(height: 15),
                     ],
                   ),
                 ),

@@ -20,12 +20,19 @@ class _QuizState extends State<Quiz> {
 
     if (selectedAnswers.length == questions.length) {
       setState(() {
-        // selectedAnswers.clear();
         activeScreen = ResultsScreen(
           chosenAnswers: selectedAnswers,
+          onRestartQuiz: restartQuiz,
         );
       });
     }
+  }
+
+  void restartQuiz() {
+    setState(() {
+      selectedAnswers.clear();
+      activeScreen = StartScreen(switchScreen);
+    });
   }
 
   @override
